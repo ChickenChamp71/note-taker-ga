@@ -41,7 +41,7 @@ app.post('/api/notes', (req, res) => {
             id: uuid(),
         };
 
-        fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        fs.readFile('/db/db.json', 'utf8', (err, data) => {
             if (err) {
                 console.error(err);
             } else {
@@ -49,7 +49,7 @@ app.post('/api/notes', (req, res) => {
 
                 parsedNotes.push(newNote);
 
-                fs.writeFile(`./db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) =>
+                fs.writeFile(`/db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) =>
                     writeErr
                         ? console.error(writeErr)
                         : console.info(`It worked :D`)    
@@ -86,7 +86,7 @@ app.get('/api/notes/:id', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
     
     const noteId = req.params.id;
-    fs.readFile(`./db/db.json`, 'utf-8', (err, data) => {
+    fs.readFile(`/db/db.json`, 'utf-8', (err, data) => {
         
         if (err) {
             console.error(err);
@@ -105,7 +105,7 @@ app.delete('/api/notes/:id', (req, res) => {
 
                     console.info(parseData);
 
-                    fs.writeFile(`./db/db.json`, JSON.stringify(parseData, null, 3), writeErr => {
+                    fs.writeFile(`/db/db.json`, JSON.stringify(parseData, null, 3), writeErr => {
                         writeErr
                             ? console.error(writeErr)
                             : console.log(`Success!`)
