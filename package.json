@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "heroku": "^8.1.4"
+    "heroku": "^7.3.0"
   }
 }
