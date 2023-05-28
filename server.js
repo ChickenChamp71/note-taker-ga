@@ -53,21 +53,24 @@ app.post('/api/notes', (req, res) => {
 
                 console.info(`${data}`);
 
-                fs.writeFile(`./db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) =>
-                    writeErr
-                        ? console.error(writeErr)
-                        : console.info(`It worked :D ${data}`)
+                fs.writeFile(`./db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
+                    if (writeErr) {
+                        console.error(writeErr);
+                        res.status(500).json({error: 'File write failed here.'});
+                    } else {
+                        console.info('Data written correctly');
+
+                        const response = {
+                            status: 'success',
+                            body: newNote,
+                        };
+                                
+                        res.json(response); 
+                    }
                     
+                }
                 )
-            }
-            console.info(newNote);
-    
-            const response = {
-                status: 'success',
-                body: newNote,
-            };
-                    
-            res.json(response);                
+            }              
         });
 
     } else {
@@ -117,25 +120,25 @@ app.delete('/api/notes/:id', (req, res) => {
 
                     console.info(parseData);
 
-                    fs.writeFile(`./db/db.json`, JSON.stringify(parseData, null, 3), writeErr => {
-                        writeErr
-                            ? console.error(writeErr)
-                            : console.log(`Success!`)
+                    fs.writeFile(`./db/db.json`, JSON.stringify(parseData, null, 3), (writeErr) => {
+                        if (writeErr) {
+                            console.error(writeErr);
+                            res.status(500).json({error: 'Failed to write file.'})
+                        } else {
+                            console.info('Wrote successfully!');
+                            const response = {
+                                status: 'success',
+                                body: parseData,
+                            };
+
+                            res.json(response);
+                        }
                     })
 
                     
                 }
-                const response = {
-                        status: 'success',
-                        body: parseData,
-                };
-
-                console.log(response);
-
-                res.json(response);
+                
             }
-
-            res.json(`There is no note.`)
         }
     });
 });
