@@ -60,9 +60,8 @@ app.post('/api/notes', (req, res) => {
         status: 'success',
         body: newNote,
     };
-
-    console.log(response);                
-    return res.status(201).json(response);
+              
+    return res.json(response);
 
     } else {
         res.status(500).json("mission failed we'll get e'm next time");
@@ -118,7 +117,7 @@ app.delete('/api/notes/:id', (req, res) => {
 
                     console.log(response);
 
-                    res.status(201).json(response);
+                    res.json(response);
                 }
             }
         }
