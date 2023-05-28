@@ -19,6 +19,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/notes', (req, res) => {
+    console.info(noteDb);
+
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
