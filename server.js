@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const noteDb = require('./db/db.json');
 const uuid = require('./helpers/uuid');
+const favicon = require('express-favicon');
 
 
 const PORT = process.env.PORT || 5001;
