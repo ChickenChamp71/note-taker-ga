@@ -60,14 +60,14 @@ app.post('/api/notes', (req, res) => {
             }                
         });
 
-    console.info(data);
+    console.info(newNote);
     
     const response = {
         status: 'success',
         body: newNote,
     };
               
-    return res.json(response);
+    res.json(response);
 
     } else {
         res.status(500).json("mission failed we'll get e'm next time");
