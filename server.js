@@ -121,15 +121,16 @@ app.delete('/api/notes/:id', (req, res) => {
                             : console.log(`Success!`)
                     })
 
-                    const response = {
+                    
+                }
+                const response = {
                         status: 'success',
                         body: parseData,
-                    };
+                };
 
-                    console.log(response);
+                console.log(response);
 
-                    res.json(response);
-                }
+                res.json(response);
             }
 
             res.json(`There is no note.`)
