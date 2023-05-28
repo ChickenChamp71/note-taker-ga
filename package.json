@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.18.2",
     "express-favicon": "^2.0.4",
-    "heroku": "^7.3.0"
+    "heroku": "^7.3.0",
+    "npm": "^9.6.7"
   },
   "repository": {
     "type": "git",

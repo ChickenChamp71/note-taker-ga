@@ -57,17 +57,16 @@ app.post('/api/notes', (req, res) => {
                         : console.info(`It worked :D ${data}`)
                     
                 )
-            }                
-        });
-
-    console.info(newNote);
+            }
+            console.info(newNote);
     
-    const response = {
-        status: 'success',
-        body: newNote,
-    };
-              
-    res.json(response);
+            const response = {
+                status: 'success',
+                body: newNote,
+            };
+                    
+            res.json(response);                
+        });
 
     } else {
         res.status(500).json("mission failed we'll get e'm next time");
