@@ -49,16 +49,18 @@ app.post('/api/notes', (req, res) => {
 
                 parsedNotes.push(newNote);
 
-                console.info(`${parsedNotes}`);
+                console.info(`${data}`);
 
                 fs.writeFile(`./db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) =>
                     writeErr
                         ? console.error(writeErr)
-                        : console.info(`It worked :D ${parsedNotes}`)
+                        : console.info(`It worked :D ${data}`)
                     
                 )
             }                
         });
+
+    console.info(data);
     
     const response = {
         status: 'success',
@@ -130,6 +132,8 @@ app.delete('/api/notes/:id', (req, res) => {
                     res.json(response);
                 }
             }
+
+            res.json(`There is no note.`)
         }
     });
 });
