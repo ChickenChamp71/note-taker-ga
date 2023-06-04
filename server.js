@@ -37,6 +37,8 @@ app.get('/api/notes', (req,res) => {
         }
     });
 
+    console.info(noteDb);
+
     res.json(noteDb);
 });
 
