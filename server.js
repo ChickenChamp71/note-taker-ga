@@ -125,11 +125,10 @@ app.get('/api/notes/:id', (req, res) => {
                     return res.json(dataFix[i]);
                 }
             }
-        };
 
+            return res.json('No available note.');
+        };
     });
-    
-    // return res.json('No available note.');
 });
 
 app.delete('/api/notes/:id', (req, res) => {
