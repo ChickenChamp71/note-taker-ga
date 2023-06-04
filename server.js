@@ -27,7 +27,7 @@ app.get('/notes', (req, res) => {
 app.get('/api/notes', (req,res) => {
 
     console.info(`${req.method} request recieved to get /api/notes.`);
-    console.info(`noteDb: ${noteDb}`);
+    console.info(`noteDb:` + noteDb);
 
     fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
         if (err) {
