@@ -28,16 +28,16 @@ app.get('/api/notes', (req,res) => {
 
     console.info(`${req.method} request recieved to get /api/notes.`);
 
-    fs.readFile(noteDb, 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-        } else {
+    // fs.readFile(noteDb, 'utf8', (err, data) => {
+    //     if (err) {
+    //         console.error(err);
+    //     } else {
 
-            console.info(data);
-        }
-    });
+    //         console.info(data);
+    //     }
+    // });
 
-    res.json(`./db/db.json`);
+    res.json(noteDb);
 });
 
 app.post('/api/notes', (req, res) => {
