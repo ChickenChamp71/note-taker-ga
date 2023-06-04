@@ -37,7 +37,7 @@ app.get('/api/notes', (req,res) => {
         }
     });
 
-    res.json(`${__dirname}/db/db.json`);
+    res.json(`./db/db.json`);
 });
 
 app.post('/api/notes', (req, res) => {
