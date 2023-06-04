@@ -52,7 +52,7 @@ app.post('/api/notes', (req, res) => {
                 console.error(err);
             } else {
 
-                console.info(newNote);
+                console.info(data);
 
                 const parsedNotes = JSON.parse(data);
 
