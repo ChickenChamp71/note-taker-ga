@@ -27,7 +27,6 @@ app.get('/notes', (req, res) => {
 app.get('/api/notes', (req,res) => {
 
     console.info(`${req.method} request recieved to get /api/notes.`);
-    console.info(`noteDb:` + noteDb);
 
     fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
         if (err) {
@@ -35,10 +34,10 @@ app.get('/api/notes', (req,res) => {
         } else {
 
             console.info(`readFile: ${data}`);
+
+            res.json(data);
         }
     });
-    
-    res.json(noteDb);
 });
 
 app.post('/api/notes', (req, res) => {
@@ -109,13 +108,22 @@ app.get('/api/notes/:id', (req, res) => {
 
     const noteId = req.params.id;
 
-    for (let i = 0; i < noteDb.length; i++) {
+    fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+        } else {
+            for (let i = 0; i < data.length; i++) {
         
-        if (noteDb[i].id == noteId) {
-            return res.json(noteDb[i]);
-        }
+            if (data[i].id == noteId) {
+                return res.json(data[i]);
+            }
         
-    }
+            }
+        };
+
+    });
+
+    
     return res.json('No available note.');
 });
 
