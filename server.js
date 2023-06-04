@@ -58,7 +58,7 @@ app.post('/api/notes', (req, res) => {
 
                 console.info(parsedNotes);
 
-                fs.writeFile(`./db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
+                fs.writeFileSync(`./db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
                     if (writeErr) {
                         console.error(writeErr);
                         res.status(500).json({error: 'File write failed here.'});
@@ -127,7 +127,7 @@ app.delete('/api/notes/:id', (req, res) => {
 
                     console.info(parseData);
 
-                    fs.writeFile(`./db/db.json`, JSON.stringify(parseData, null, 3), (writeErr) => {
+                    fs.writeFileSync(`./db/db.json`, JSON.stringify(parseData, null, 3), (writeErr) => {
                         if (writeErr) {
                             console.error(writeErr);
                             res.status(500).json({error: 'Failed to write file.'})
