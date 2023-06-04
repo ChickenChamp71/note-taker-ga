@@ -124,14 +124,12 @@ app.get('/api/notes/:id', (req, res) => {
                 if (dataFix[i].id == noteId) {
                     return res.json(dataFix[i]);
                 }
-        
             }
         };
 
     });
-
     
-    return res.json('No available note.');
+    // return res.json('No available note.');
 });
 
 app.delete('/api/notes/:id', (req, res) => {
