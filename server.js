@@ -28,14 +28,14 @@ app.get('/api/notes', (req,res) => {
 
     console.info(`${req.method} request recieved to get /api/notes.`);
 
-    // fs.readFile(noteDb, 'utf8', (err, data) => {
-    //     if (err) {
-    //         console.error(err);
-    //     } else {
+    fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+        } else {
 
-    //         console.info(data);
-    //     }
-    // });
+            console.info(data);
+        }
+    });
 
     res.json(noteDb);
 });
@@ -56,7 +56,7 @@ app.post('/api/notes', (req, res) => {
 
         console.info(`${__dirname}/db/db.json`);
 
-        fs.readFile(noteDb, 'utf8', (err, data) => {
+        fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
             if (err) {
                 console.error(err);
             } else {
@@ -71,13 +71,13 @@ app.post('/api/notes', (req, res) => {
 
                 console.info(parsedNotes);
 
-                fs.writeFile(noteDb, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
+                fs.writeFile(`${__dirname}/db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
                     if (writeErr) {
                         console.error(writeErr);
                         res.status(500).json({error: 'File write failed here.'});
                     } else {
                         console.info('Data written correctly');
-                        fs.readFile(noteDb, 'utf8', (err, data) => {
+                        fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
                             if (err) {
                                 console.error(err);
                             } else {
@@ -123,7 +123,7 @@ app.delete('/api/notes/:id', (req, res) => {
     console.info(`Check: ${noteDb}`);
 
     const noteId = req.params.id;
-    fs.readFile(noteDb, 'utf8', (err, data) => {
+    fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
         
         console.info(`Check 2: ${data}`);
 
@@ -147,7 +147,7 @@ app.delete('/api/notes/:id', (req, res) => {
 
                     console.info(parseData);
 
-                    fs.writeFile(noteDb, JSON.stringify(parseData, null, 3), (writeErr) => {
+                    fs.writeFile(`${__dirname}/db/db.json`, JSON.stringify(parseData, null, 3), (writeErr) => {
                         if (writeErr) {
                             console.error(writeErr);
                             res.status(500).json({error: 'Failed to write file.'})
