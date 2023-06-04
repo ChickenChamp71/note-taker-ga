@@ -106,31 +106,33 @@ app.post('/api/notes', (req, res) => {
     }
 });
 
-// app.get('/api/notes/:id', (req, res) => {
+app.get('/api/notes/:id', (req, res) => {
 
-//     const noteId = req.params.id;
+    const noteId = req.params.id;
 
-//     fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
-//         if (err) {
-//             console.error(err);
-//         } else {
+    fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
+        if (err) {
+            console.error(err);
+        } else {
 
-//             const dataFix = JSON.parse(data);
+            const dataFix = JSON.parse(data);
 
-//             for (let i = 0; i < dataFix.length; i++) {
+            console.info(dataFix);
+
+            for (let i = 0; i < dataFix.length; i++) {
         
-//             if (dataFix[i].id == noteId) {
-//                 return res.json(dataFix[i]);
-//             }
+                if (dataFix[i].id == noteId) {
+                    return res.json(dataFix[i]);
+                }
         
-//             }
-//         };
+            }
+        };
 
-//     });
+    });
 
     
-//     return res.json('No available note.');
-// });
+    return res.json('No available note.');
+});
 
 app.delete('/api/notes/:id', (req, res) => {
     
