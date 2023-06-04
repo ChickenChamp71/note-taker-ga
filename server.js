@@ -35,7 +35,9 @@ app.get('/api/notes', (req,res) => {
 
             console.info(`readFile: ${data}`);
 
-            res.send(data);
+            const dataTime = JSON.parse(data);
+
+            res.send(dataTime);
         }
     });
 });
@@ -112,10 +114,13 @@ app.get('/api/notes/:id', (req, res) => {
         if (err) {
             console.error(err);
         } else {
-            for (let i = 0; i < data.length; i++) {
+
+            const dataFix = JSON.parse(data);
+
+            for (let i = 0; i < dataFix.length; i++) {
         
-            if (data[i].id == noteId) {
-                return res.json(data[i]);
+            if (dataFix[i].id == noteId) {
+                return res.json(dataFix[i]);
             }
         
             }
