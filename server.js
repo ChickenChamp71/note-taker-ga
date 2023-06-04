@@ -52,9 +52,11 @@ app.post('/api/notes', (req, res) => {
 
                 const parsedNotes = JSON.parse(data);
 
+                console.info(parsedNotes);
+
                 parsedNotes.push(newNote);
 
-                console.info(`${data}`);
+                console.info(parsedNotes);
 
                 fs.writeFile(`./db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
                     if (writeErr) {
