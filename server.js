@@ -39,7 +39,7 @@ app.get('/api/notes', (req,res) => {
 
     console.info(noteDb);
 
-    res.json(noteDb);
+    res.json(`${__dirname}/db/db.json`);
 });
 
 app.post('/api/notes', (req, res) => {
