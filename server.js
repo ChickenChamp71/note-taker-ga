@@ -45,9 +45,9 @@ app.post('/api/notes', (req, res) => {
 
         console.info(newNote);
 
-        console.info(`app/db/db.json`);
+        console.info(`${__dirname}/db/db.json`);
 
-        fs.readFile(`app/db/db.json`, 'utf8', (err, data) => {
+        fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
             if (err) {
                 console.error(err);
             } else {
@@ -62,7 +62,7 @@ app.post('/api/notes', (req, res) => {
 
                 console.info(parsedNotes);
 
-                fs.writeFile(`app/db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
+                fs.writeFile(`${__dirname}/db/db.json`, JSON.stringify(parsedNotes, null, 3), (writeErr) => {
                     if (writeErr) {
                         console.error(writeErr);
                         res.status(500).json({error: 'File write failed here.'});
@@ -107,7 +107,7 @@ app.delete('/api/notes/:id', (req, res) => {
     console.info(`Check: ${noteDb}`);
 
     const noteId = req.params.id;
-    fs.readFile(`app/db/db.json`, 'utf8', (err, data) => {
+    fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
         
         console.info(`Check 2: ${data}`);
 
@@ -131,7 +131,7 @@ app.delete('/api/notes/:id', (req, res) => {
 
                     console.info(parseData);
 
-                    fs.writeFile(`app/db/db.json`, JSON.stringify(parseData, null, 3), (writeErr) => {
+                    fs.writeFile(`${__dirname}/db/db.json`, JSON.stringify(parseData, null, 3), (writeErr) => {
                         if (writeErr) {
                             console.error(writeErr);
                             res.status(500).json({error: 'Failed to write file.'})
