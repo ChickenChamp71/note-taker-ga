@@ -35,7 +35,7 @@ app.get('/api/notes', (req,res) => {
 
             console.info(`readFile: ${data}`);
 
-            res.json(data);
+            res.send(data);
         }
     });
 });
