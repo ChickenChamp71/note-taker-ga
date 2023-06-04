@@ -17,6 +17,8 @@
   ## Installation
 
   All you have to do is visit the website it's hosted on.
+  
+  https://note-taker-ga.herokuapp.com/
 
   ## Usage
 
