@@ -55,10 +55,11 @@ app.post('/api/notes', (req, res) => {
                 console.info(data);
 
                 const parsedNotes = JSON.parse(data);
+                const parsedNewNote = JSON.parse(newNote);
 
                 console.info(parsedNotes);
 
-                parsedNotes.push(newNote);
+                parsedNotes.push(parsedNewNote);
 
                 console.info(parsedNotes);
 
