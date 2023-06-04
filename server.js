@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const noteDb = require('./db/db.json');
-const uuid = require('./helpers/uuid');
+const noteDb = require(`${__dirname}/db/db.json`);
+const uuid = require(`${__dirname}/helpers/uuid`);
 const favicon = require('express-favicon');
 
 
