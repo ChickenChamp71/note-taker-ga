@@ -43,6 +43,10 @@ app.post('/api/notes', (req, res) => {
             id: uuid(),
         };
 
+        console.info(newNote);
+
+        console.info(`${__dirname}/db/db.json`);
+
         fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
             if (err) {
                 console.error(err);
