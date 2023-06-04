@@ -43,7 +43,7 @@ app.post('/api/notes', (req, res) => {
             id: uuid(),
         };
 
-        fs.readFile(`./db/db.json`, 'utf8', (err, data) => {
+        fs.readFileSync(`./db/db.json`, 'utf8', (err, data) => {
             if (err) {
                 console.error(err);
             } else {
@@ -103,7 +103,7 @@ app.delete('/api/notes/:id', (req, res) => {
     console.info(`Check: ${noteDb}`);
 
     const noteId = req.params.id;
-    fs.readFile(`./db/db.json`, 'utf-8', (err, data) => {
+    fs.readFileSync(`./db/db.json`, 'utf-8', (err, data) => {
         
         console.info(`Check 2: ${data}`);
 
