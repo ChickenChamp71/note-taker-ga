@@ -68,10 +68,17 @@ app.post('/api/notes', (req, res) => {
                         res.status(500).json({error: 'File write failed here.'});
                     } else {
                         console.info('Data written correctly');
-                        console.info(noteDb);
+                        fs.readFile(`${__dirname}/db/db.json`, 'utf8', (err, data) => {
+                            if (err) {
+                                console.error(err);
+                            } else {
+                
+                                console.info(data);
+                            }
+                        });
 
                         const response = {
-                            status: 'success',
+                            status: 'Success',
                             body: newNote,
                         };
                                 
